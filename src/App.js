@@ -1,13 +1,7 @@
-import './App.css';
-
-function App() {
+function MyButton() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Hello Word
-      </header>
-    </div>
+    <button>Soy un botón</button>
   );
 }
 
-export default App;
+export default MyButton;
