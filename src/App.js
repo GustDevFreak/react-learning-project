@@ -1,10 +1,9 @@
-import { myName, myAge } from "./newApp.test";
+import operationSum from "./newApp.test"; //Ahora el nombre de importacion es obligatorio que sea igual al componente original
 
 export default function MyApp() {
   return (
     <div>
-      <p>Hello, my name is {myName()}</p>
-      <p>I am {myAge()} years old</p>
+      <p>La suma de 2 + 5 es {operationSum(2,5)}</p>
     </div>
   );
 }

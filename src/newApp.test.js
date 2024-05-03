@@ -1,9 +1,4 @@
-function myName() {
-    return "Gustavo";
+export default function sum(x,y)
+{
+    return x+y;
 }
-
-function myAge() {
-    return 26;
-}
-
-export {myName, myAge};
