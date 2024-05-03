@@ -1,14 +1,10 @@
-function MyButton() {
-  return (
-    <button>Don't touch me</button>
-  );
-}
+import { myName, myAge } from "./newApp.test";
 
-export default function MyApp() { //Solo puede haber un archivo de exportacion.
+export default function MyApp() {
   return (
     <div>
-      <h1>Welcome to the jungle</h1>
-      <MyButton />
+      <p>Hello, my name is {myName()}</p>
+      <p>I am {myAge()} years old</p>
     </div>
   );
 }
