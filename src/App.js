@@ -1,15 +1,20 @@
-function sayHelloWordWithStyleCss() {
+function profile() {
   const user = {
-    imageUrl: "https://images7.memedroid.com/images/UPLOADED645/6201803e9abd9.jpeg"
+    name: 'Carl Johnson',
+    alias: 'Ciyei',
+    imageUrl: 'https://i.pinimg.com/236x/4e/21/66/4e2166ecc3c3c87f3b2e66380ec29745.jpg',
   };
   return (
-    <h1>
-      {/* Aqui usamos comillas para el parametro className del JSX -> p, cuando es texto */}
-      <p className="red-text">Hello Bro !!!</p> 
-      {/* Aqui usamos llaves para el parametro src del JSX -> img, cuando es una variable JS */}
-      <img src={user.imageUrl} alt=""></img>
-    </h1>
+    <>
+    {/* aplicando concatenacion dentro de las llaves */}
+      <h1>{'Nombre: ' + user.name}</h1>
+      <h1>{'Apodo: ' + user.alias}</h1>
+      <img
+        src={user.imageUrl}
+        alt={'Photo of ' + user.name}
+      />
+    </>
   )
 }
 
-export default sayHelloWordWithStyleCss
+export default profile
