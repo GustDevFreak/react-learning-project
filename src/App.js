@@ -1,5 +1,9 @@
-import greeting from "./greeting.test"; // es recomendable que la variable importanda tenga el mismo nombre que el archivo.
-
-export default function MyApp() {
-  return greeting("Gustavo");
+function sayHelloWordWithStyleCss() {
+  return (
+    <h1>
+      <p className="red-text">Hello Word !!!</p>
+    </h1>
+  )
 }
+
+export default sayHelloWordWithStyleCss
