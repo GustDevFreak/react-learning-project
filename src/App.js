@@ -1,7 +1,8 @@
 function sayHelloWordWithStyleCss() {
+  var text = "Hello World";
   return (
     <h1>
-      <p className="red-text">Hello Word !!!</p>
+      <p className="red-text">{text}</p>
     </h1>
   )
 }
