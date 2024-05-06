@@ -1,15 +1,10 @@
-import { Message } from "./message.test";
+// Esta vez importamos un componente por defecto
+import ListTeams from "./footballTeams.test";
 
-function getYear() {
-  const currentYear = 2024;
-
+function App() {
   return (
-    <>
-      {
-        currentYear === 2024 && <Message />
-      }
-    </>
-  )
+    <ListTeams />
+  );
 }
 
-export default getYear
+export default App
