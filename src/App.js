@@ -1,10 +1,11 @@
-// Esta vez importamos un componente por defecto
-import ListTeams from "./footballTeams.test";
+export default function MyButton() {
+  function handleClick() {
+    alert('Hello World');
+  };
 
-function App() {
   return (
-    <ListTeams />
+    <button onClick={handleClick}>
+      Click me
+    </button>
   );
 }
-
-export default App
