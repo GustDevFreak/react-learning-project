@@ -1,5 +1,22 @@
 import { useState } from "react";
 
+function MyApp() {
+  return (
+    <>
+    <h1>El mismo componente, pero con estados independiente</h1>
+    <p>Esto quiere decir que con react se puede usar el mismo componente, y cada uno obtendrá su propio estado.</p>
+    <div>
+      <h2>Button 1</h2>
+      <MyButton />
+    </div>
+    <div>
+      <h2>Button 2</h2>
+      <MyButton />
+    </div>
+    </>
+  );
+}
+
 // declarando una variable de estado dentro del componente
 function MyButton() {
   
@@ -19,4 +36,4 @@ function MyButton() {
 }
 
 // Ahora ejecuto el componente
-export default MyButton
+export default MyApp
