@@ -1,23 +1,25 @@
 import { useState } from "react";
 
 export default function Board() {
-  // (1) Esto crea una matriz con 9 elementos 
+  const [xIsNext, setXIsNext] = useState(true); // (1) Establezco un nuevo estado predeterminado para el primer tiro. ("X")
   const [squares, setSquares] = useState(Array(9).fill(null));
 
-  // (4) Se define la funcion para actualizar la matriz que contiene el estado de su placa
+  // Se define la funcion para actualizar la matriz que contiene el estado de su placa
   function handleClick(i) {
-    const nextSquares = squares.slice(); //esto copia el contenido de la matriz en una nueva matriz.
-    nextSquares[i] = "X";
+    const nextSquares = squares.slice(); //esto copia el contenido de la matriz en una nueva matriz. (inmutabilidad)
+    // (2) Ahora con esta condicion, alternamos el estado del siguiente tiro para setear en el cuadrado seleccionado, una "X" o una "O".
+    if (xIsNext) {
+      nextSquares[i] = "X";
+    } else {
+      nextSquares[i] = "O";
+    }
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
 
-  // (2) Ahora se pasa las PROP a cada uno del componente Square que se esta renderizando
+  // Ahora se pasa las PROP a cada uno del componente Square que se esta renderizando
   return (
     <>
-      {/* (5) Usando funcion de flecha, una forma mas corta de definir funciones.*/}
-      <p>El componente principal pasa props a los componentes secundarios para que se puedan mostrar correctamente. 
-        Al hacer clic en el componente secundario ahora le pide al componente principal que actualice el estado de la placa. 
-        Cuando cambia el estado, tanto del componente principal como todos los elementos secundarios se vuelven a renderizar automáticamente</p>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -37,7 +39,7 @@ export default function Board() {
   );
 }
 
-// (3) Se prepara el componente Square para recibir el PROP
+// Se prepara el componente Square para recibir el PROP
 function Square({ value, onSquareClick }) {
   return <button className="square" onClick={onSquareClick}>{value}</button>;
 }
