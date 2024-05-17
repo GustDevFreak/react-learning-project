@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 export default function Board() {
-  const [xIsNext, setXIsNext] = useState(true); // (1) Establezco un nuevo estado predeterminado para el primer tiro. ("X")
+  const [xIsNext, setXIsNext] = useState(true); // Establezco un nuevo estado predeterminado para el primer tiro. ("X")
   const [squares, setSquares] = useState(Array(9).fill(null));
 
-  // Se define la funcion para actualizar la matriz que contiene el estado de su placa
   function handleClick(i) {
-    const nextSquares = squares.slice(); //esto copia el contenido de la matriz en una nueva matriz. (inmutabilidad)
-    // (2) Ahora con esta condicion, alternamos el estado del siguiente tiro para setear en el cuadrado seleccionado, una "X" o una "O".
+    if (squares[i]) { // (1) validamos si un cuadrado tiene valor, si es asi, no dejamos que siga el proceso de actualizar el estado.
+      return;
+    }
+    const nextSquares = squares.slice();
+
     if (xIsNext) {
       nextSquares[i] = "X";
     } else {
