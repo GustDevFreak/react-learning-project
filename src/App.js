@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// (4) Se hace que este componente este controlado por los accesorios que recibe (props).
+// Se hace que este componente este controlado por los accesorios que recibe (props).
 function Board({ xIsNext, squares, onPlay }) {
 
   function handleClick(i) {
@@ -73,20 +73,45 @@ function Square({ value, onSquareClick }) {
   return <button className="square" onClick={onSquareClick}>{value}</button>;
 }
 
-// (1) Agregando componente de nivel superior para mostrar lista de movimientos anteriores, y desde aqui se llama al Board
+// Agregando componente de nivel superior para mostrar lista de movimientos anteriores, y desde aqui se llama al Board
 export default function Game() {
-  const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState(0);
+  // (4) Fue lo ultimo que se cambio para simplificar codigo
+  const xIsNext = currentMove % 2 === 0;
 
-  // (2) Para renderizar los squares del movimiento actual
-  const currentSquares = history[history.length - 1];
+  // (3) Para renderizar el movimiento seleccionado actualmente, en lugar de siempre el movimiento final
+  const currentSquares = history[currentMove];
 
-  // (3) Funcion que llamara el componente para actualizar el juego
+  // Funcion que llamara el componente para actualizar el juego
   function handlePlay(nextSquares) {
-    setHistory([...history, nextSquares]);
-    setXIsNext(!xIsNext);
+    // (2) Crea un nuevo arreglo que combina la rebanada del historial hasta el 
+    // movimiento actual con el nuevo estado del tablero (nextSquares).
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    setHistory(nextHistory);
+    setCurrentMove(nextHistory.length - 1);
     console.log(history);
   }
+
+  function jumpTo(nextMove) {
+    setCurrentMove(nextMove);
+  }
+
+  const moves = history.map((squares, move) => {
+    let description;
+    if (move > 0) {
+      description = 'Go to move #' + move;
+    } else {
+      description = 'Go to game start';
+    }
+    return (
+      // (1) Los movimientos nunca se reordenarán, eliminarán ni se insertarán en el medio,
+      // por lo que es seguro usar el índice de movimientos como clave.
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    );
+  });
 
   return(
     <div className="game">
@@ -95,7 +120,7 @@ export default function Game() {
       </div>
       <div className="game-info">
         <ol>
-
+          {moves}
         </ol>
       </div>
     </div>
