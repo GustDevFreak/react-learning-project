@@ -1,30 +1,26 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Contact from "./pages/contact";
-import Profile from "./pages/profile";
+const String = 'String'
+const boolean = true
+const array = [1, 'array', true]
+const functionTest = () => 'function'
+const objectTest = { clave: 'object' }
+const date = new Date()
 
 function App() {
+
   return (
-    // Encapsula nuestro componentes y renderiza las rutas
-    <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/profile/kevin">Profile</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route path="/contact" element={<Contact />} />
-        {/* Definiendo una ruta dinamica */}
-        <Route path="/profile/:name" element={<Profile />} />
-      </Routes>
-    </Router>
+    <>
+      <h1>{String}</h1>
+
+      <h2>React no renderiza un booleano {boolean}</h2>
+
+      <h3>{array[1]}</h3>
+
+      <h4>{functionTest()}</h4>
+      
+      <h5>{JSON.stringify(objectTest['clave'])}</h5>
+
+      <h6>{JSON.stringify(date)}</h6>
+    </>
   )
 }
 
