@@ -1,25 +1,23 @@
-const String = 'String'
-const boolean = true
-const array = [1, 'array', true]
-const functionTest = () => 'function'
-const objectTest = { clave: 'object' }
-const date = new Date()
+const Items = ({ name, seen }) => {
+  return (
+    <>
+      <li>{name} {seen ? '✅ (Accepted)' : '⛔ (Refused)'}</li>
+      {/* Tambien se puede usar && para mostrar algo solo si es verdadero. */}
+      <ul><b>{seen && ' -> Developer with experiencia'}</b></ul>
+    </>
+
+  )
+}
 
 function App() {
 
   return (
     <>
-      <h1>{String}</h1>
-
-      <h2>React no renderiza un booleano {boolean}</h2>
-
-      <h3>{array[1]}</h3>
-
-      <h4>{functionTest()}</h4>
-      
-      <h5>{JSON.stringify(objectTest['clave'])}</h5>
-
-      <h6>{JSON.stringify(date)}</h6>
+      <h1>List of developers</h1>
+      <Items name="Kevin" seen={true} />
+      <Items name="Gustavo" seen={true} />
+      <Items name="Julian" seen={false} />
+      <Items name="Alberto" seen={false} />
     </>
   )
 }
