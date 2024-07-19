@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { AgregarTarea } from "./components/AgregarTarea"
 
 const Items = ({ name, seen }) => {
   return (
@@ -13,12 +14,6 @@ const Items = ({ name, seen }) => {
 
 function App() {
 
-  const addNew = () => {
-    
-    // using spread operator "...arrayDevelopers"
-    setArrayDevelopers([...arrayDevelopers, {id: 5, name : "Mauricio", seen : false}])
-  }
-
   let listDevelopers = [
     { id : 1, name : "Kevin" , seen : true },
     { id : 2, name : "Gustavo" , seen : true },
@@ -26,14 +21,14 @@ function App() {
     { id : 4, name : "Alberto" , seen : false }
   ]
 
-  const [arrayDevelopers, setArrayDevelopers] = useState(listDevelopers)
+  const [arrayDevelopers] = useState(listDevelopers)
 
   return (
     <>
       <h1>List of developers</h1>
+      <AgregarTarea />
+      <br></br><br></br>
       {arrayDevelopers.map(item => <Items key={item.id} name={item.name} seen={item.seen}></Items>)}
-
-      <button onClick={() => addNew()}>Agregar new</button>
     </>
   )
 }
