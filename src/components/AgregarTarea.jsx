@@ -6,13 +6,8 @@ export const AgregarTarea = ({addNewDeveloper}) => {
         setInputValue(event.target.value)
     }
     const onSubmit = (event) => {
-        const newDeveloper = {
-            id : 5,
-            name : inputValue,
-            seen : true
-        }
         event.preventDefault()
-        addNewDeveloper(developers => [...developers, newDeveloper])
+        addNewDeveloper(inputValue)
     }
     return (
         <form onSubmit={onSubmit}>
