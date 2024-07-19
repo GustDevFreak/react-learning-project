@@ -21,12 +21,12 @@ function App() {
     { id : 4, name : "Alberto" , seen : false }
   ]
 
-  const [arrayDevelopers] = useState(listDevelopers)
+  const [arrayDevelopers, setArrayDevelopers] = useState(listDevelopers)
 
   return (
     <>
       <h1>List of developers</h1>
-      <AgregarTarea />
+      <AgregarTarea addNewDeveloper={setArrayDevelopers} />
       <br></br><br></br>
       {arrayDevelopers.map(item => <Items key={item.id} name={item.name} seen={item.seen}></Items>)}
     </>
