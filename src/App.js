@@ -1,8 +1,8 @@
-import { FormComponent } from './components/FormComponent'
+import { UsersComponent } from './components/UsersComponent'
 
 export default App => {
 
   return (
-    <FormComponent></FormComponent>
+    <UsersComponent></UsersComponent>
   );
 }
