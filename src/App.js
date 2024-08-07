@@ -1,21 +1,15 @@
-import { useState } from "react";
-import { UserList } from "./components/userList";
+import {useCounter} from './hooks/useCounter';
 
-export const UsersApp = () => {
+export default App => {
 
-  const [endPoint, setEndPoint] = useState('users')
-
-  const handleFetch = () => {
-    setEndPoint('comments')
-  }
+  const {counter, increment, reset, decrement} = useCounter(0);
 
   return (
-    <>
-      <h1>Lista de usuarios:</h1>
-      <UserList endpoint={endPoint}></UserList>
-      <button onClick={handleFetch}>Click for Comments</button>
-    </>
-  )
+    <div className="App">
+      <h1>Contador: {counter}</h1>
+      <button className="btn btn-success m-2" onClick={() => increment(1)}>+</button>
+      <button className="btn btn-danger m-2" onClick={() => reset()}>Reset</button>
+      <button className="btn btn-success m-2" onClick={() => decrement(1)}>-</button>
+    </div>
+  );
 }
-
-export default UsersApp;
