@@ -1,8 +1,8 @@
-import { UsersComponent } from './components/UsersComponent'
+import { Calculos } from './components/Calculos'
 
 export default App => {
 
   return (
-    <UsersComponent></UsersComponent>
+    <Calculos></Calculos>
   );
 }
