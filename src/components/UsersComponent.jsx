@@ -1,12 +1,21 @@
+import { useEffect, useRef } from 'react';
 import { useFetchUsers } from '../hooks/useFetchUsers';
 
 export const UsersComponent = () => {
 
+    // este useRef() es para focusar el input cuando se renderiza el componente users con el foco en el input de busqueda
+    const focusRef = useRef();
+
     const { data, isLoading, errors } = useFetchUsers('https://jsonplaceholder.typicode.com/users');
+
+    useEffect(() => {
+        focusRef.current.focus();
+    }, [])
 
     return (
         <>
         <h1>Lista de usuarios</h1>
+        <input ref={focusRef} placeholder='Buscar...'></input>
         {
             isLoading 
                 ? <h4>Cargando</h4>
