@@ -1,7 +1,7 @@
-import { CallBackComponent } from './components/CallBackComponent'
+import { ListTask } from './components/ListTask'
 
 export default function App() {
   return (
-    <CallBackComponent />
+    <ListTask />
   )
 }
