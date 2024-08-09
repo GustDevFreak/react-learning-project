@@ -1,8 +1,7 @@
-import { Calculos } from './components/Calculos'
+import { CallBackComponent } from './components/CallBackComponent'
 
-export default App => {
-
+export default function App() {
   return (
-    <Calculos></Calculos>
-  );
+    <CallBackComponent />
+  )
 }
